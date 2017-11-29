@@ -231,11 +231,11 @@ public:
         consensus.BIP34Hash = uint256S("0x0000000023b3a96d3484e5abb3755c413e7d41500f8e2a5c3f0dd01299cd8ef8");
         consensus.BIP65Height = 581885; // 00000000007f6655f22f98e72ed80d8b06dc761d5da09df0fa1dc4be4f861eb6
         consensus.BIP66Height = 330776; // 000000002104c8c45e99a8853285a3b592602a3ccde2b832481da85e9e4ba182
-        consensus.BTGHeight = 1210320;
+        consensus.BTGHeight = 10000000;
         consensus.BTGPremineWindow = 50;
         consensus.BTGPremineEnforceWhitelist = false;
-        consensus.BitcoinPostforkBlock = uint256S("00000000ef93c2d9bac8da61ff11a699a5b815f77a194c567c5de0dbdf0bf28b");
-        consensus.BitcoinPostforkTime = 1508111338;
+        consensus.BitcoinPostforkBlock = uint256();
+        consensus.BitcoinPostforkTime = 0;
         consensus.powLimit = uint256S("0007ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
         consensus.powLimitStart = uint256S("0000000fffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
         consensus.powLimitLegacy = uint256S("00000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
@@ -272,17 +272,16 @@ public:
         // By default assume that the signatures in ancestors of this block are valid.
         consensus.defaultAssumeValid = uint256S("0x0000000002e9e7b00e1f6dc5123a04aad68dd0f0968d8c7aa45f6640795c37b1"); //1135275
 
-        
         pchMessageStartLegacy[0] = 0x0b;
         pchMessageStartLegacy[1] = 0x11;
         pchMessageStartLegacy[2] = 0x09;
         pchMessageStartLegacy[3] = 0x07;
 
-        pchMessageStart[0] = 0xe1;
-        pchMessageStart[1] = 0x47;
-        pchMessageStart[2] = 0x6d;
-        pchMessageStart[3] = 0x44;
-        nDefaultPort = 18338;
+        pchMessageStart[0] = 0x0b;
+        pchMessageStart[1] = 0xc2;
+        pchMessageStart[2] = 0xac;
+        pchMessageStart[3] = 0x40;
+        nDefaultPort = 4487;
         nBitcoinDefaultPort = 18333;
         nPruneAfterHeight = 1000;
         const size_t N = 200, K = 9;  // Same as mainchain.
@@ -299,16 +298,12 @@ public:
         vSeeds.clear();
         // nodes with support for servicebits filtering should be at the top
 
-        vSeeds.emplace_back("eu-test-dnsseed.bitcoingold-official.org", true);
-        vSeeds.emplace_back("test-dnsseed.bitcoingold.org", true);
-        vSeeds.emplace_back("test-dnsseed.btcgpu.org", true);
-        vSeeds.emplace_back("btg.dnsseed.minertopia.org", true);
-
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,111);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,196);
         base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,239);
         base58Prefixes[EXT_PUBLIC_KEY] = {0x04, 0x35, 0x87, 0xCF};
         base58Prefixes[EXT_SECRET_KEY] = {0x04, 0x35, 0x83, 0x94};
+
 
         vFixedSeeds = std::vector<SeedSpec6>(pnSeed6_test, pnSeed6_test + ARRAYLEN(pnSeed6_test));
 
